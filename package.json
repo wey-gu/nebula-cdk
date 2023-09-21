@@ -1,8 +1,16 @@
 {
   "name": "nebula-cdk",
   "version": "0.1.0",
-  "bin": {
-    "nebula-cdk": "bin/nebula-cdk.js"
+  "author": {
+    "name": "Wey Gu",
+    "email": "weyl.gu@gmail.com",
+    "url": "https://siwei.io/en"
+  },
+  "homepage": "https://github.com/wey-gu/nebula-cdk",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wey-gu/nebula-cdk.git"
   },
   "scripts": {
     "build": "tsc",
@@ -11,6 +19,7 @@
     "cdk": "cdk"
   },
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "@types/jest": "^29.5.4",
     "@types/node": "20.5.9",
     "aws-cdk": "^2.96.2",
