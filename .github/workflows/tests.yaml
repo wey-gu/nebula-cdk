@@ -32,7 +32,7 @@ jobs:
         npm ci
         npm run build
         npm run test
-        cdk synth
+        npx cdk synth
         cd ../..
     - name: Run tests in examples/cdk8s
       run: |
@@ -40,4 +40,4 @@ jobs:
         npm ci
         npm run build
         npm run test
-        npm run compile && cdk8s synth
+        npm run compile && npx cdk8s synth
