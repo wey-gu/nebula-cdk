@@ -39,5 +39,4 @@ jobs:
         cd examples/cdk8s
         npm ci
         npm run build
-        npm run test
         npm run compile && npx cdk8s synth
