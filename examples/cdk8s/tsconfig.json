@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "charset": "utf8",
     "declaration": true,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
@@ -30,5 +29,7 @@
   ],
   "exclude": [
     "node_modules"
+    "dist",
+    "dist_example"
   ]
 }
