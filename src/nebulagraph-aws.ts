@@ -14,7 +14,7 @@ export class NebulaGraphAws extends cdk.Stack {
 
         const app = new App();
         const chart = new Chart(app, 'NebulaGraphChart');
-        new NebulaGraph(chart, 'NebulaGraph', props.nebulaGraphProps);
+        new NebulaGraph(chart, 'NebulaGraph', props.nebulaGraphProps, chart);
         const k8sManifests = App._synthChart(chart);
 
         props.cluster.addManifest('NebulaGraphManifest', ...k8sManifests);

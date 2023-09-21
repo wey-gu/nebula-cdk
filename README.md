@@ -9,48 +9,11 @@ npm install nebula-cdk
 
 ## CDK8s
 
-```ts
-import { App } from 'cdk8s';
-import { NebulaGraph, NebulaGraphProps } from 'nebula-cdk';
-
-const app = new App();
-new NebulaGraph(app, 'NebulaGraph', {
-  namespace: 'nebula',
-  graphdLogVolumeClaimStorageClassName: 'efs-sc',
-  storagedLogVolumeClaimStorageClassName: 'efs-sc',
-  storagedDataVolumeClaimsStorageClassName: 'efs-sc',
-  metadLogVolumeClaimStorageClassName: 'efs-sc',
-  metadDataVolumeClaimStorageClassName: 'efs-sc',
-});
-app.synth();
-```
+See [examples/cdk8s](examples/cdk8s)
 
 ## EKS
 
-```ts
-import { App, Stack } from '@aws-cdk/core';
-import { Cluster } from '@aws-cdk/aws-eks';
-import { NebulaGraphAws, NebulaGraphAwsProps } from 'nebula-cdk';
-
-const app = new App();
-const stack = new Stack(app, 'NebulaGraphAwsStack');
-const cluster = new Cluster(stack, 'EksCluster');
-
-const nebulaGraphAwsProps: NebulaGraphAwsProps = {
-  cluster: cluster,
-  nebulaGraphProps: {
-    namespace: 'nebula',
-    graphdLogVolumeClaimStorageClassName: 'efs-sc',
-    storagedLogVolumeClaimStorageClassName: 'efs-sc',
-    storagedDataVolumeClaimsStorageClassName: 'efs-sc',
-    metadLogVolumeClaimStorageClassName: 'efs-sc',
-    metadDataVolumeClaimStorageClassName: 'efs-sc',
-  },
-};
-
-new NebulaGraphAws(stack, 'NebulaGraphAws', nebulaGraphAwsProps);
-app.synth();
-```
+TBD
 
 ## Useful commands
 

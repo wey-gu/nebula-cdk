@@ -1,4 +1,5 @@
 import { Construct } from 'constructs';
+import { Chart } from 'cdk8s';
 import { ApiObject, Helm } from 'cdk8s';
 import * as kplus from 'cdk8s-plus-25';
 
@@ -62,7 +63,7 @@ export interface NebulaGraphProps {
     schedulerName?: string;
 }
 export class NebulaGraph extends Construct {
-    constructor(scope: Construct, id: string, props: NebulaGraphProps = {}) {
+    constructor(scope: Construct, id: string, props: NebulaGraphProps = {}, chart: Chart) {
         super(scope, id);
 
         const namespace = props.namespace || 'default';
@@ -135,7 +136,7 @@ export class NebulaGraph extends Construct {
         const otherProps = { ...otherDefaults, ...props };
 
         // Create the namespace if it doesn't exist
-        new kplus.Namespace(this, 'NebulaNamespace', {
+        new kplus.Namespace(chart, 'NebulaNamespace', {
             metadata: {
                 name: namespace,
             },
@@ -145,7 +146,7 @@ export class NebulaGraph extends Construct {
         const operatorNamespace = 'nebula-operator-system';
         const chartVersion = '1.6.0';
 
-        new Helm(this, 'NebulaOperator', {
+        new Helm(chart, 'NebulaOperator', {
             chart: 'nebula-operator',
             repo: 'https://vesoft-inc.github.io/nebula-operator/charts',
             namespace: operatorNamespace,
@@ -154,7 +155,7 @@ export class NebulaGraph extends Construct {
 
         // Create a NebulaGraph Cluster with CRD
         // Reference: https://github.com/vesoft-inc/nebula-operator/blob/master/config/samples/apps_v1alpha1_nebulacluster.yaml
-        const nebulaCluster = new ApiObject(this, 'NebulaCluster', {
+        new ApiObject(chart, 'NebulaCluster', {
             apiVersion: 'apps.nebula-graph.io/v1alpha1',
             kind: 'NebulaCluster',
             metadata: {
