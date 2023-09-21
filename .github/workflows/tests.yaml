@@ -1,0 +1,42 @@
+name: Tests and dry-runs
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
+    - name: Build project
+      run: npm run build --if-present
+    - name: Run tests
+      run: npm test
+    - name: Run tests in examples/cdk
+      run: |
+        cd examples/cdk
+        npm ci
+        npm run build
+        npm run test
+        npx cdk synth
+        cd ../..
+    - name: Run tests in examples/cdk8s
+      run: |
+        cd examples/cdk8s
+        npm ci
+        npm run build
+        npm run compile && npx cdk8s synth
