@@ -1,0 +1,1204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NebulaGraph should create a NebulaGraph cluster with default values 1`] = `
+[
+  {
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+      "name": "default",
+    },
+    "spec": {},
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "ServiceAccount",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-sa",
+      "namespace": "nebula-operator-system",
+    },
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "ServiceAccount",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "scheduler",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-scheduler-sa",
+      "namespace": "nebula-operator-system",
+    },
+  },
+  {
+    "apiVersion": "v1",
+    "data": {
+      "scheduler-config.yaml": "apiVersion: kubescheduler.config.k8s.io/v1
+kind: KubeSchedulerConfiguration
+profiles:
+  # Compose all plugins in one profile
+  - schedulerName: nebula-scheduler
+    plugins:
+      multiPoint:
+        enabled:
+          - name: NodeZone
+        disabled:
+",
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "scheduler",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "scheduler-config",
+      "namespace": "nebula-operator-system",
+    },
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "ClusterRole",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-role",
+    },
+    "rules": [
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "nodes",
+        ],
+        "verbs": [
+          "get",
+          "list",
+        ],
+      },
+      {
+        "apiGroups": [
+          "rbac.authorization.k8s.io",
+        ],
+        "resources": [
+          "clusterrolebindings",
+          "clusterroles",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "serviceaccounts",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "secrets",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "configmaps",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "endpoints",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "events",
+        ],
+        "verbs": [
+          "create",
+          "list",
+          "patch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "persistentvolumeclaims",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "persistentvolumes",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "pods",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "services",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps",
+        ],
+        "resources": [
+          "statefulsets",
+          "deployments",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.kruise.io",
+        ],
+        "resources": [
+          "statefulsets",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebulaclusters",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebulaclusters/finalizers",
+        ],
+        "verbs": [
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebulaclusters/status",
+        ],
+        "verbs": [
+          "get",
+          "patch",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebularestores",
+        ],
+        "verbs": [
+          "create",
+          "delete",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebularestores/finalizers",
+        ],
+        "verbs": [
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps.nebula-graph.io",
+        ],
+        "resources": [
+          "nebularestores/status",
+        ],
+        "verbs": [
+          "get",
+          "patch",
+          "update",
+        ],
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "ClusterRole",
+    "metadata": {
+      "annotations": {
+        "rbac.authorization.kubernetes.io/autoupdate": "true",
+      },
+      "labels": {
+        "app.kubernetes.io/component": "scheduler",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-scheduler-role",
+    },
+    "rules": [
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "configmaps",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+          "events.k8s.io",
+        ],
+        "resources": [
+          "events",
+        ],
+        "verbs": [
+          "create",
+          "patch",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "coordination.k8s.io",
+        ],
+        "resources": [
+          "leases",
+        ],
+        "verbs": [
+          "create",
+        ],
+      },
+      {
+        "apiGroups": [
+          "coordination.k8s.io",
+        ],
+        "resourceNames": [
+          "nebula-scheduler",
+        ],
+        "resources": [
+          "leases",
+        ],
+        "verbs": [
+          "get",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "endpoints",
+        ],
+        "verbs": [
+          "create",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resourceNames": [
+          "nebula-scheduler",
+        ],
+        "resources": [
+          "endpoints",
+        ],
+        "verbs": [
+          "delete",
+          "get",
+          "update",
+          "patch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "nodes",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+          "patch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "pods",
+        ],
+        "verbs": [
+          "delete",
+          "get",
+          "list",
+          "watch",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "bindings",
+          "pods/binding",
+        ],
+        "verbs": [
+          "create",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "pods/status",
+        ],
+        "verbs": [
+          "patch",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "replicationcontrollers",
+          "services",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps",
+          "extensions",
+        ],
+        "resources": [
+          "replicasets",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "apps",
+        ],
+        "resources": [
+          "statefulsets",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "policy",
+        ],
+        "resources": [
+          "poddisruptionbudgets",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "persistentvolumeclaims",
+          "persistentvolumes",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+          "patch",
+          "update",
+        ],
+      },
+      {
+        "apiGroups": [
+          "authentication.k8s.io",
+        ],
+        "resources": [
+          "tokenreviews",
+        ],
+        "verbs": [
+          "create",
+        ],
+      },
+      {
+        "apiGroups": [
+          "authorization.k8s.io",
+        ],
+        "resources": [
+          "subjectaccessreviews",
+        ],
+        "verbs": [
+          "create",
+        ],
+      },
+      {
+        "apiGroups": [
+          "storage.k8s.io",
+        ],
+        "resources": [
+          "csinodes",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "namespaces",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "storage.k8s.io",
+        ],
+        "resources": [
+          "csidrivers",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "storage.k8s.io",
+        ],
+        "resources": [
+          "csistoragecapacities",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+      {
+        "apiGroups": [
+          "storage.k8s.io",
+        ],
+        "resources": [
+          "storageclasses",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+        ],
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "ClusterRoleBinding",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-rolebinding",
+    },
+    "roleRef": {
+      "apiGroup": "rbac.authorization.k8s.io",
+      "kind": "ClusterRole",
+      "name": "nebula-operator-controller-manager-role",
+    },
+    "subjects": [
+      {
+        "kind": "ServiceAccount",
+        "name": "nebula-operator-controller-manager-sa",
+        "namespace": "nebula-operator-system",
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "ClusterRoleBinding",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "scheduler",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-scheduler-rolebinding",
+    },
+    "roleRef": {
+      "apiGroup": "rbac.authorization.k8s.io",
+      "kind": "ClusterRole",
+      "name": "nebula-operator-scheduler-role",
+    },
+    "subjects": [
+      {
+        "kind": "ServiceAccount",
+        "name": "nebula-operator-scheduler-sa",
+        "namespace": "nebula-operator-system",
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "Role",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-election-role",
+      "namespace": "nebula-operator-system",
+    },
+    "rules": [
+      {
+        "apiGroups": [
+          "",
+          "coordination.k8s.io",
+        ],
+        "resources": [
+          "configmaps",
+          "leases",
+        ],
+        "verbs": [
+          "get",
+          "list",
+          "watch",
+          "create",
+          "update",
+          "patch",
+          "delete",
+        ],
+      },
+      {
+        "apiGroups": [
+          "",
+        ],
+        "resources": [
+          "events",
+        ],
+        "verbs": [
+          "create",
+          "patch",
+        ],
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "RoleBinding",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-election-rolebinding",
+      "namespace": "nebula-operator-system",
+    },
+    "roleRef": {
+      "apiGroup": "rbac.authorization.k8s.io",
+      "kind": "Role",
+      "name": "nebula-operator-controller-manager-election-role",
+    },
+    "subjects": [
+      {
+        "kind": "ServiceAccount",
+        "name": "nebula-operator-controller-manager-sa",
+        "namespace": "nebula-operator-system",
+      },
+    ],
+  },
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "RoleBinding",
+    "metadata": {
+      "name": "nebula-scheduler-extension-apiserver-authentication-reader",
+      "namespace": "kube-system",
+    },
+    "roleRef": {
+      "apiGroup": "rbac.authorization.k8s.io",
+      "kind": "Role",
+      "name": "extension-apiserver-authentication-reader",
+    },
+    "subjects": [
+      {
+        "kind": "ServiceAccount",
+        "name": "nebula-operator-scheduler-sa",
+        "namespace": "nebula-operator-system",
+      },
+    ],
+  },
+  {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller-manager",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-controller-manager-deployment",
+      "namespace": "nebula-operator-system",
+    },
+    "spec": {
+      "replicas": 2,
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "controller-manager",
+          "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+          "app.kubernetes.io/name": "nebula-operator",
+        },
+      },
+      "template": {
+        "metadata": {
+          "labels": {
+            "app.kubernetes.io/component": "controller-manager",
+            "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+            "app.kubernetes.io/managed-by": "Helm",
+            "app.kubernetes.io/name": "nebula-operator",
+            "app.kubernetes.io/version": "1.6.0",
+            "helm.sh/chart": "nebula-operator-1.6.0",
+          },
+        },
+        "spec": {
+          "containers": [
+            {
+              "args": [
+                "--health-probe-bind-address=:8081",
+                "--metrics-bind-address=:8080",
+                "--enable-kruise=false",
+                "--sync-period=0h30m0s",
+                "--max-concurrent-reconciles=3",
+                "--enable-leader-election",
+                "--leader-election-namespace=nebula-operator-system",
+                "--admission-webhook=false",
+              ],
+              "command": [
+                "/usr/local/bin/controller-manager",
+              ],
+              "image": "vesoft/nebula-operator:v1.6.0",
+              "imagePullPolicy": "Always",
+              "livenessProbe": {
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": 8081,
+                },
+                "initialDelaySeconds": 15,
+                "periodSeconds": 20,
+              },
+              "name": "controller-manager",
+              "readinessProbe": {
+                "httpGet": {
+                  "path": "/readyz",
+                  "port": 8081,
+                },
+                "initialDelaySeconds": 5,
+                "periodSeconds": 10,
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "200m",
+                  "memory": "200Mi",
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "100Mi",
+                },
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+              },
+            },
+            {
+              "args": [
+                "--secure-listen-address=0.0.0.0:8443",
+                "--upstream=http://127.0.0.1:8080/",
+                "--logtostderr=true",
+                "--v=2",
+              ],
+              "image": "bitnami/kube-rbac-proxy:0.14.2",
+              "imagePullPolicy": "Always",
+              "name": "kube-rbac-proxy",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                },
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "100m",
+                  "memory": "30Mi",
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "20Mi",
+                },
+              },
+            },
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "restartPolicy": "Always",
+          "securityContext": {
+            "runAsNonRoot": true,
+          },
+          "serviceAccountName": "nebula-operator-controller-manager-sa",
+          "terminationGracePeriodSeconds": 10,
+        },
+      },
+    },
+  },
+  {
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "scheduler",
+        "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "nebula-operator",
+        "app.kubernetes.io/version": "1.6.0",
+        "helm.sh/chart": "nebula-operator-1.6.0",
+      },
+      "name": "nebula-operator-scheduler-deployment",
+      "namespace": "nebula-operator-system",
+    },
+    "spec": {
+      "replicas": 2,
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "scheduler",
+          "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+          "app.kubernetes.io/name": "nebula-operator",
+        },
+      },
+      "template": {
+        "metadata": {
+          "labels": {
+            "app.kubernetes.io/component": "scheduler",
+            "app.kubernetes.io/instance": "test-chart-nebulagraph-nebulaoperator-c8f44644",
+            "app.kubernetes.io/managed-by": "Helm",
+            "app.kubernetes.io/name": "nebula-operator",
+            "app.kubernetes.io/version": "1.6.0",
+            "helm.sh/chart": "nebula-operator-1.6.0",
+          },
+        },
+        "spec": {
+          "containers": [
+            {
+              "command": [
+                "/usr/local/bin/scheduler",
+                "--config=/etc/kubernetes/scheduler-config.yaml",
+                "--leader-elect",
+                "--leader-elect-resource-name=nebula-scheduler",
+                "--leader-elect-resource-namespace=nebula-operator-system",
+                "--v=0",
+              ],
+              "image": "vesoft/nebula-operator:v1.6.0",
+              "imagePullPolicy": "Always",
+              "livenessProbe": {
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": 10259,
+                  "scheme": "HTTPS",
+                },
+                "initialDelaySeconds": 15,
+              },
+              "name": "scheduler",
+              "readinessProbe": {
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": 10259,
+                  "scheme": "HTTPS",
+                },
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "200m",
+                  "memory": "200Mi",
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "100Mi",
+                },
+              },
+              "securityContext": {
+                "privileged": false,
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/etc/kubernetes",
+                  "name": "scheduler-config",
+                  "readOnly": true,
+                },
+              ],
+            },
+          ],
+          "hostNetwork": false,
+          "hostPID": false,
+          "restartPolicy": "Always",
+          "serviceAccountName": "nebula-operator-scheduler-sa",
+          "volumes": [
+            {
+              "configMap": {
+                "name": "scheduler-config",
+              },
+              "name": "scheduler-config",
+            },
+          ],
+        },
+      },
+    },
+  },
+  {
+    "apiVersion": "apps.nebula-graph.io/v1alpha1",
+    "kind": "NebulaCluster",
+    "metadata": {
+      "name": "nebula",
+      "namespace": "default",
+    },
+    "spec": {
+      "agent": {
+        "image": "vesoft/nebula-agent",
+        "resources": {
+          "limits": {
+            "cpu": "200m",
+            "memory": "256Mi",
+          },
+          "requests": {
+            "cpu": "100m",
+            "memory": "128Mi",
+          },
+        },
+        "version": "latest",
+      },
+      "exporter": {
+        "image": "vesoft/nebula-stats-exporter",
+        "maxRequests": 20,
+        "replicas": 1,
+        "version": "v3.3.0",
+      },
+      "graphd": {
+        "image": "vesoft/nebula-graphd",
+        "logVolumeClaim": {
+          "resources": {
+            "requests": {
+              "storage": "1Gi",
+            },
+          },
+        },
+        "replicas": 1,
+        "resources": {
+          "limits": {
+            "cpu": "1",
+            "memory": "1Gi",
+          },
+          "requests": {
+            "cpu": "500m",
+            "memory": "500Mi",
+          },
+        },
+        "service": {
+          "externalTrafficPolicy": "Local",
+          "type": "NodePort",
+        },
+        "version": "v3.6.0",
+      },
+      "imagePullPolicy": "Always",
+      "logRotate": {
+        "rotate": 5,
+        "size": "100M",
+      },
+      "metad": {
+        "dataVolumeClaim": {
+          "resources": {
+            "requests": {
+              "storage": "5Gi",
+            },
+          },
+        },
+        "image": "vesoft/nebula-metad",
+        "logVolumeClaim": {
+          "resources": {
+            "requests": {
+              "storage": "1Gi",
+            },
+          },
+        },
+        "replicas": 1,
+        "resources": {
+          "limits": {
+            "cpu": "1",
+            "memory": "1Gi",
+          },
+          "requests": {
+            "cpu": "500m",
+            "memory": "500Mi",
+          },
+        },
+        "version": "v3.6.0",
+      },
+      "reference": {
+        "name": "statefulsets.apps",
+        "version": "v1",
+      },
+      "storaged": {
+        "dataVolumeClaims": [
+          {
+            "resources": {
+              "requests": {
+                "storage": "10Gi",
+              },
+            },
+          },
+        ],
+        "image": "vesoft/nebula-storaged",
+        "logVolumeClaim": {
+          "resources": {
+            "requests": {
+              "storage": "1Gi",
+            },
+          },
+        },
+        "replicas": 3,
+        "resources": {
+          "limits": {
+            "cpu": "1",
+            "memory": "1Gi",
+          },
+          "requests": {
+            "cpu": "500m",
+            "memory": "500Mi",
+          },
+        },
+        "version": "v3.6.0",
+      },
+      "topologySpreadConstraints": [
+        {
+          "topologyKey": "kubernetes.io/hostname",
+          "whenUnsatisfiable": "ScheduleAnyway",
+        },
+      ],
+    },
+  },
+]
+`;
