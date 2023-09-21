@@ -1,8 +1,10 @@
 # CDK8s NebulaGraph Example
 
+ref: [cdk8s/getting-started](https://cdk8s.io/docs/latest/getting-started/)
+
 ```bash
 npm install -g cdk8s-cli
-mkdir examples/cdk8s
+mkdir -p examples/cdk8s
 cd examples/cdk8s
 cdk8s init typescript-app
 ```
